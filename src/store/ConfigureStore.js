@@ -1,10 +1,17 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { routerMiddleware } from "connected-react-router";
-import RootReducer from "./RootReducer";
+import axios from "axios";
+import axiosMiddleware from "redux-axios-middleware";
 import { createBrowserHistory } from "history";
+import RootReducer from "./RootReducer";
 
 export const history = createBrowserHistory();
+
+const client = axios.create({
+  baseURL: "http://localhost:8080/api/v1/",
+  responseType: "json",
+});
 
 export default function configureStore(initialState) {
   const composeEnhancers =
@@ -13,7 +20,9 @@ export default function configureStore(initialState) {
   const store = createStore(
     RootReducer(history),
     initialState,
-    composeEnhancers(applyMiddleware(thunk, routerMiddleware(history)))
+    composeEnhancers(
+      applyMiddleware(thunk, axiosMiddleware(client), routerMiddleware(history))
+    )
   );
 
   if (module.hot) {
