@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class Dashboard extends Component {
+    componentDidMount() {
+        this.props.getAllWallets();
+    }
+
     render() {
         return (
             <div>
