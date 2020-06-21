@@ -9,7 +9,7 @@ import RootReducer from "./RootReducer";
 export const history = createBrowserHistory();
 
 const client = axios.create({
-  baseURL: "http://localhost:8080/api/v1/",
+  baseURL: process.env.API_URL,
   responseType: "json",
 });
 

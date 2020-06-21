@@ -1,12 +1,10 @@
 const path = require("path");
 const webpack = require("webpack");
+const dotenv = require("dotenv");
 
-module.exports = {  
+module.exports = {
   entry: {
-      'app': [
-          "react-hot-loader/patch",
-          "./src/index.js"
-      ]
+    app: ["react-hot-loader/patch", "./src/index.js"],
   },
   mode: "development",
   module: {
@@ -15,19 +13,19 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        options: { presets: ["@babel/env"] },
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
   resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
-    filename: "bundle.js"
+    filename: "bundle.js",
   },
   devServer: {
     historyApiFallback: true,
@@ -35,7 +33,12 @@ module.exports = {
     contentBase: path.join(__dirname, "public/"),
     port: 3000,
     publicPath: "http://localhost:3000/dist/",
-    hot: true
+    hot: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(dotenv.config().parsed),
+    })
+  ],
 };
