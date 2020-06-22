@@ -4,7 +4,7 @@ import RateSelector from "../selector/RateSelector.component";
 
 const BalanceDisplay = ({ balance, onCurrencySelect, currencySelected }) => {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", height: "10rem" }}>
       <Card.Body>
         <Card.Title>Wallet Balance</Card.Title>
         <RateSelector onCurrencySelect={onCurrencySelect} currencySelected={currencySelected} />

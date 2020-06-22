@@ -12,7 +12,7 @@ const Exchange = ({
   onSaveRateValue
 }) => {
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", height: "10rem" }}>
       <Card.Body>
         <Card.Title>Exchange Rate</Card.Title>
         {(() => {

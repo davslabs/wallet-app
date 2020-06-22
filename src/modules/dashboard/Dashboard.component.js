@@ -71,7 +71,7 @@ class Dashboard extends Component {
       });
     }
 
-    if (this.props.rate !== prevProps.rate) {      
+    if (this.props.rate !== prevProps.rate) {
       this.setState({
         rate: this.props.rate,
         rateValue: this.props.rate.value,
@@ -122,7 +122,13 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div
+        style={{
+          position: "absolute",
+          left: "35vw",
+          top: "35vh",
+        }}
+      >
         <InputSelector
           onWalletSelect={this.handleWalletSelection}
           wallets={this.props.wallets}
