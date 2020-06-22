@@ -20,4 +20,4 @@ Clone this repo and at the root folder run:
 then if you want to run the APP:
 > yarn dev 
 
-#Remember to run the API first! (https://github.com/davslabs/wallet-api)
+# Remember to run the API first! (https://github.com/davslabs/wallet-api)
