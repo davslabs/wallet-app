@@ -9,7 +9,7 @@ import RootReducer from "./RootReducer";
 export const history = createBrowserHistory();
 
 const client = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.API_URL || "https://test-wallet-rest-api.herokuapp.com/api/v1/",
   responseType: "json",
 });
 
