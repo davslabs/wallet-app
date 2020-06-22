@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const dotenv = require("dotenv");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -24,7 +25,7 @@ module.exports = {
   resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
     path: path.resolve(__dirname, "dist/"),
-    publicPath: "/dist/",
+    publicPath: "/",
     filename: "bundle.js",
   },
   devServer: {
@@ -39,6 +40,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(dotenv.config().parsed),
-    })
+    }),
+    new HtmlWebpackPlugin({      
+      template: path.resolve(__dirname, "./public/index.html")
+    }),
   ],
 };
