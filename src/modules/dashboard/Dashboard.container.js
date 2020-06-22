@@ -1,7 +1,8 @@
-import Dashboard from "./Dashboard.component";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { has } from "lodash";
 import * as DashboardActions from "./Dashboard.action";
+import Dashboard from "./Dashboard.component";
 
 const mapDispatchToProps = (dispatch) => {
   const actions = { ...DashboardActions };
@@ -10,7 +11,12 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    wallets: 123,
+    wallets: has(state, "dashboard.wallets") ? state.dashboard.wallets : {},
+    walletInfo: has(state, "dashboard.walletInfo")
+      ? state.dashboard.walletInfo
+      : {},
+    rate: has(state, "dashboard.rate") ? state.dashboard.rate : {},
+    loading: state.dashboard.loading,
   };
 };
 
