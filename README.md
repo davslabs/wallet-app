@@ -1,5 +1,7 @@
 # Dashboard Wallet APP
 
+## Working demo at https://test-wallet-app.herokuapp.com/
+
 ## Environment Variables
 To make it run you should create a `.env` file at the root of the app with the following format:
 
